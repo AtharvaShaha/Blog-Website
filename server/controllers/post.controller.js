@@ -19,12 +19,30 @@ exports.createPost = async (req, res, next) => {
       coverImage = result.secure_url;
     }
 
+    // Handle tags - can be JSON array or comma-separated string
+    let tagsArray = [];
+    if (tags) {
+      try {
+        // Try to parse as JSON first
+        tagsArray = JSON.parse(tags);
+      } catch (error) {
+        // If JSON parsing fails, treat as comma-separated string
+        if (typeof tags === 'string') {
+          tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+        } else if (Array.isArray(tags)) {
+          tagsArray = tags;
+        } else {
+          tagsArray = [String(tags)];
+        }
+      }
+    }
+
     const post = await Post.create({
       title,
       content,
       excerpt,
       category,
-      tags: tags ? JSON.parse(tags) : [],
+      tags: tagsArray,
       coverImage,
       author: req.user._id
     });
@@ -147,12 +165,30 @@ exports.updatePost = async (req, res, next) => {
       post.coverImage = result.secure_url;
     }
 
+    // Handle tags update - can be JSON array or comma-separated string
+    let updatedTags = post.tags;
+    if (tags) {
+      try {
+        // Try to parse as JSON first
+        updatedTags = JSON.parse(tags);
+      } catch (error) {
+        // If JSON parsing fails, treat as comma-separated string
+        if (typeof tags === 'string') {
+          updatedTags = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+        } else if (Array.isArray(tags)) {
+          updatedTags = tags;
+        } else {
+          updatedTags = [String(tags)];
+        }
+      }
+    }
+
     // Update fields
     post.title = title || post.title;
     post.content = content || post.content;
     post.excerpt = excerpt || post.excerpt;
     post.category = category || post.category;
-    post.tags = tags ? JSON.parse(tags) : post.tags;
+    post.tags = updatedTags;
     post.status = status || post.status;
 
     await post.save();
@@ -219,7 +255,9 @@ exports.toggleLike = async (req, res, next) => {
     res.status(200).json({
       status: 'success',
       data: {
-        likes: post.likes.length,
+        postId: post._id,
+        likes: post.likes,
+        likesCount: post.likes.length,
         isLiked: userIndex === -1
       }
     });
