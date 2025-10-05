@@ -1,9 +1,10 @@
 # ByteJournal Deployment Guide
 
 ## Live Application
+
 - **Frontend**: [Your Vercel URL]
 - **Backend API**: [Your Railway URL]
-- **Repository**: https://github.com/AtharvaShaha/Bytejorunal
+- **Repository**: https://github.com/AtharvaShaha/Blog-Website
 
 ## Deployment Architecture
 
@@ -50,7 +51,7 @@ CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 1. Visit [railway.app](https://railway.app)
 2. Sign in with GitHub
 3. Click "New Project" → "Deploy from GitHub repo"
-4. Select `AtharvaShaha/Bytejorunal`
+4. Select `AtharvaShaha/Blog-Website`
 5. Choose the `server` folder as root directory
 6. Set environment variables in Railway dashboard
 7. Deploy and get your backend URL
@@ -59,7 +60,7 @@ CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 1. Visit [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "New Project"
-4. Import `AtharvaShaha/Bytejorunal`
+4. Import `AtharvaShaha/Blog-Website`
 5. Set root directory to `client`
 6. Add environment variable: `NEXT_PUBLIC_API_URL=https://your-backend.railway.app/api`
 7. Deploy and get your frontend URL
