@@ -57,6 +57,21 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    status: 'success',
+    message: 'ByteJournal API is running',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      posts: '/api/posts',
+      users: '/api/users'
+    }
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -80,7 +95,8 @@ app.all('*', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 5002;
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
