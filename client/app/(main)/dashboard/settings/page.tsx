@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
@@ -31,7 +30,7 @@ export default function SettingsPage() {
 
   return (
     <ProtectedRoute>
-      <motion.div initial={{opacity:0, y:6}} animate={{opacity:1, y:0}} transition={{duration:0.35}} className="max-w-3xl">
+      <div className="max-w-3xl">
         <h2 className="text-2xl font-bold mb-4">Settings</h2>
 
         <div className="bg-white rounded-lg p-6 shadow">
@@ -69,7 +68,7 @@ export default function SettingsPage() {
             </div>
           </form>
         </div>
-      </motion.div>
+      </div>
     </ProtectedRoute>
   );
 }

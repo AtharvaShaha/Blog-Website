@@ -90,8 +90,9 @@ export default function EditPostPage({ params }: EditPostPageProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Edit Post</h1>
+    <div className="posts-bg min-h-screen">
+      <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8 bg-amber-50/85 dark:bg-amber-900/40 rounded-xl backdrop-blur-sm border border-amber-100/30">
+        <h1 className="text-3xl font-bold text-amber-900 mb-8">Edit Post</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {submitError && (
@@ -110,18 +111,15 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   />
                 </svg>
               </div>
-              <div className="ml-3">
-                <p className="text-sm text-red-700">{submitError}</p>
-              </div>
+                  <div className="ml-3">
+                    <p className="text-sm text-red-700">{submitError}</p>
+                  </div>
             </div>
           </div>
         )}
 
         <div>
-          <label
-            htmlFor="title"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="title" className="block text-sm font-medium text-amber-900">
             Title
           </label>
           <input
@@ -129,16 +127,13 @@ export default function EditPostPage({ params }: EditPostPageProps) {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-amber-200 shadow-sm focus:border-amber-500 focus:ring-amber-500"
             required
           />
         </div>
 
         <div>
-          <label
-            htmlFor="category"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="category" className="block text-sm font-medium text-amber-900">
             Category
           </label>
           <input
@@ -146,14 +141,12 @@ export default function EditPostPage({ params }: EditPostPageProps) {
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-amber-200 shadow-sm focus:border-amber-500 focus:ring-amber-500"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Content
-          </label>
+          <label className="block text-sm font-medium text-amber-900 mb-2">Content</label>
           <Editor
             value={content}
             onEditorChange={(content) => setContent(content)}
@@ -174,9 +167,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Featured Image
-          </label>
+          <label className="block text-sm font-medium text-amber-900 mb-2">Featured Image</label>
           <input
             type="file"
             accept="image/*"
@@ -184,10 +175,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
             className="hidden"
             id="image-upload"
           />
-          <label
-            htmlFor="image-upload"
-            className="cursor-pointer inline-block px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-          >
+          <label htmlFor="image-upload" className="cursor-pointer inline-block px-4 py-2 border border-amber-200 rounded-md shadow-sm text-sm font-medium text-amber-900 bg-amber-50 hover:bg-amber-100">
             Choose Image
           </label>
           {previewUrl && (
@@ -203,21 +191,11 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         </div>
 
         <div className="flex justify-end space-x-4">
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-          >
-            Save Changes
-          </button>
+          <button type="button" onClick={() => router.back()} className="px-4 py-2 text-sm font-medium text-amber-900 bg-amber-50 border border-amber-200 rounded-md hover:bg-amber-100">Cancel</button>
+          <button type="submit" className="px-4 py-2 text-sm font-medium text-white bg-amber-700 rounded-md hover:bg-amber-800">Save Changes</button>
         </div>
       </form>
+      </div>
     </div>
   );
 }

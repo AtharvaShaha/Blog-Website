@@ -43,7 +43,8 @@ export default function PostsPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    <div className="posts-bg min-h-screen">
+      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-extrabold text-gray-900">Latest Posts</h1>
@@ -124,6 +125,7 @@ export default function PostsPage() {
           </Link>
         </div>
       )}
+      </div>
     </div>
   );
 }

@@ -34,10 +34,10 @@ export default function PostCard({ post }: PostCardProps) {
   };
 
   return (
-    <article className="bg-white rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 overflow-hidden">
+  <article className="bg-amber-50/80 dark:bg-amber-900/40 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 overflow-hidden backdrop-blur-sm border border-amber-100/40">
       <Link href={`/posts/${post._id}`} className="block">
         {post.coverImage ? (
-          <div className="relative h-44 w-full bg-gray-100">
+          <div className="relative h-44 w-full bg-gray-100/60">
             <Image
               src={post.coverImage}
               alt={post.title}
@@ -55,14 +55,14 @@ export default function PostCard({ post }: PostCardProps) {
             </div>
           </div>
         ) : (
-          <div className="h-44 w-full bg-gradient-to-r from-gray-100 to-gray-50 flex items-center justify-center">
+          <div className="h-44 w-full bg-gradient-to-r from-gray-100/60 to-gray-50/60 flex items-center justify-center">
             <span className="text-gray-400">No image</span>
           </div>
         )}
 
         <div className="p-5">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2" style={{display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{post.title}</h3>
-          <p className="text-sm text-gray-600 mb-4" style={{display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{post.excerpt || truncateText(post.content, 160)}</p>
+          <h3 className="text-lg font-semibold text-amber-900 mb-2" style={{display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{post.title}</h3>
+          <p className="text-sm text-amber-800 mb-4" style={{display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{post.excerpt || truncateText(post.content, 160)}</p>
 
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="flex items-center gap-3">

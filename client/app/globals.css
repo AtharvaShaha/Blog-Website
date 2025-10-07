@@ -24,3 +24,37 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Posts page background: subtle gradient with soft animated overlay */
+.posts-bg {
+  /* warm sunset gradient: peach → amber → violet */
+  background: linear-gradient(135deg, #FFD5BA 0%, #FFC857 45%, #8B5CF6 100%);
+  background-color: #FFD5BA; /* fallback warm peach */
+  position: relative;
+  overflow: hidden;
+}
+
+.posts-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08), transparent 12%),
+              radial-gradient(circle at 90% 80%, rgba(255,255,255,0.06), transparent 12%),
+              linear-gradient(90deg, rgba(255,200,130,0.12), rgba(139,92,246,0.12));
+  pointer-events: none;
+  z-index: 0;
+  transform: translateZ(0);
+  animation: postsHue 20s linear infinite;
+}
+@keyframes postsHue {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(8deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+
+/* Ensure content sits above overlay */
+.posts-bg > * { position: relative; z-index: 1; }
+
+/* Optional stronger visible test style: uncomment while verifying visually */
+/* .posts-bg { background: linear-gradient(135deg, #6b21a8 0%, #0ea5a9 100%); } */
+
