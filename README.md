@@ -36,7 +36,7 @@ The `.env` file is already configured with:
 - MongoDB Atlas connection
 - JWT secrets
 - Google OAuth credentials
-- Server port (5000)
+- Server port (5002)
 - CORS settings
 
 #### Frontend (.env.local in client folder)
